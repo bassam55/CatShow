@@ -1,25 +1,30 @@
-var slideIndex = 1;
-showSlides(slideIndex);
+let slideIndex = 0;
+let slides = document.querySelectorAll("#slideshow img");
+let prevBtn = document.querySelector("#prev-btn");
+let nextBtn = document.querySelector("#next-btn");
 
-function plusSlides(n) {
-  showSlides((slideIndex += n));
+function showSlide(n) {
+  slides.forEach((slide) => slide.classList.remove("active"));
+  slides[n].classList.add("active");
 }
 
-function currentSlide(n) {
-  showSlides((slideIndex = n));
+function prevSlide() {
+  slideIndex--;
+  if (slideIndex < 0) {
+    slideIndex = slides.length - 1;
+  }
+  showSlide(slideIndex);
 }
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("slide");
-  if (n > slides.length) {
-    slideIndex = 1;
+function nextSlide() {
+  slideIndex++;
+  if (slideIndex >= slides.length) {
+    slideIndex = 0;
   }
-  if (n < 1) {
-    slideIndex = slides.length;
-  }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slides[slideIndex - 1].style.display = "block";
+  showSlide(slideIndex);
 }
+
+prevBtn.addEventListener("click", prevSlide);
+nextBtn.addEventListener("click", nextSlide);
+
+setInterval(nextSlide, 3000);
