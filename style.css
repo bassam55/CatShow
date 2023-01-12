@@ -1,4 +1,5 @@
 #slideshow {
+  margin-top: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +10,7 @@
 }
 
 #slideshow img {
-  height: 2000px;
+  height: 500px;
   width: auto;
   display: none;
 }
@@ -20,9 +21,10 @@
 .button-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 8px;
 }
 button {
-  width: 300px;
-  height: 150px;
-  font-size: 50px;
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
 }
